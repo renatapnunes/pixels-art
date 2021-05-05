@@ -57,6 +57,11 @@ pallete.addEventListener('click', function(e) {
     selected[0].className = 'color';
     e.target.className = 'color selected';
 });
-
+// preencher pixel com a cor selecionada
+board.addEventListener('click', function (e) {
+    let selected = document.getElementsByClassName('selected');
+    //let selectedColor = selected.style.backgroundColor;
+    e.target.style.backgroundColor = selected[0].style.backgroundColor;
+});
 
 
