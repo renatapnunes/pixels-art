@@ -1,10 +1,10 @@
 // cria e adiciona paleta de cores
 let pallete = document.getElementById('color-palette');
+let arrayRandomColors = generateArrayRandomColors();
 for (let i = 0; i < 4; i += 1) {
     let color = document.createElement('div');
     color.className = 'color';
-    let colorsArray = generateArrayRandomColors();
-    color.style.backgroundColor = colorsArray[i];
+    color.style.backgroundColor = arrayRandomColors[i];
     pallete.appendChild(color);
 }
 // gera rgb aleatorio
@@ -49,5 +49,14 @@ for (let i = 0; i < 5; i += 1) {
     }
 }
 // define cor preta como cor inicial
-colorsArray[0].className = 'color selected';
+let blackColor = document.querySelector('.color');
+blackColor.className = 'color selected';
+// seleciona cor a partir do clique do mouse
+pallete.addEventListener('click', function(e) {
+    let selected = document.getElementsByClassName('selected');
+    selected[0].className = 'color';
+    e.target.className = 'color selected';
+});
+
+
 
