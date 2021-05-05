@@ -6,6 +6,9 @@
     margin: 5px;
     
 }
+#generate-board-size {
+    display: inline-block;
+}
 #pixel-board {
     display: table;
 }

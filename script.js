@@ -34,19 +34,50 @@ function generateArrayRandomColors () {
 }
 // quadro de pixels
 let board = document.getElementById('pixel-board');
-for (let i = 0; i < 5; i += 1) {
-    let pixelLine = document.createElement('div');
-    pixelLine.className = 'pixel-line';
-    board.appendChild(pixelLine);
-}
-let arrayPixelLine = document.getElementsByClassName('pixel-line');
-for (let i = 0; i < 5; i += 1) {
-    for (let j = 0; j < 5; j += 1) {
-        let pixel = document.createElement('div');
-        pixel.className = 'pixel';
-        pixel.style.backgroundColor = 'rgb(255, 255, 255)';
-        arrayPixelLine[i].appendChild(pixel);
+let arrayPixelLine = [];
+
+// tamanho do quadro de pixel inicial
+genarateBoard(5);
+
+function genarateBoard(size) {
+    for (let i = 0; i < size; i += 1) {
+        let pixelLine = document.createElement('div');
+        pixelLine.className = 'pixel-line';
+        board.appendChild(pixelLine);
     }
+    arrayPixelLine = document.getElementsByClassName('pixel-line');
+    for (let i = 0; i < size; i += 1) {
+        for (let j = 0; j < size; j += 1) {
+            let pixel = document.createElement('div');
+            pixel.className = 'pixel';
+            pixel.style.backgroundColor = 'rgb(255, 255, 255)';
+            arrayPixelLine[i].appendChild(pixel);
+        }
+    }
+}
+// tamanho do quadro de pixel definido pela pessoa usuaria
+let inputBoardSize = document.getElementById('board-size');
+let generateButton = document.getElementById('generate-board');
+let stringInput;
+let size;
+generateButton.addEventListener('click', captureInput);
+function captureInput() {
+    removeBoard();
+    stringInput = inputBoardSize.value;
+    if (stringInput !== '') {
+        size = parseInt(stringInput);
+        if (size < 5) {
+            size = 5;
+        } else if (size > 50) {
+            size = 50;
+        }
+    } else {
+        alert('Board inválido!');
+        size = 5;
+    }
+    inputBoardSize.value = '';
+    console.log(size);
+    return genarateBoard(size);
 }
 // define cor preta como cor inicial
 let blackColor = document.querySelector('.color');
@@ -71,4 +102,10 @@ clearButton.addEventListener('click', function () {
         arrayPixels[i].style.backgroundColor = 'rgb(255, 255, 255)';
     }
 });
+
+function removeBoard() {
+    for (let i = 0; i < arrayPixelLine.length; i += 0) {
+        board.removeChild(arrayPixelLine[i]);
+    }
+}
 
