@@ -3,8 +3,8 @@ let pallete = document.getElementById('color-palette');
 for (let i = 0; i < 4; i += 1) {
     let color = document.createElement('div');
     color.className = 'color';
-    let arrayRadomColors = generateArrayRandomColors();
-    color.style.backgroundColor = arrayRadomColors[i];
+    let colorsArray = generateArrayRandomColors();
+    color.style.backgroundColor = colorsArray[i];
     pallete.appendChild(color);
 }
 // gera rgb aleatorio
@@ -18,16 +18,16 @@ function generateRandomColors () {
 // gera array de 4 cores
 function generateArrayRandomColors () {
     let colorsArray = [];
-    let colorRGB;
+    let rgb;
     colorsArray[0] = 'rgb(0, 0, 0)';
     for (let i = 1; i < 4; i += 1) {
-        colorRGB = generateRandomColors();
-        colorsArray[i] = colorRGB;
+        rgb = generateRandomColors();
+        colorsArray[i] = rgb;
     }
     for (let i = 1; i < colorsArray - 1; i += 1) {
         if (colorsArray[i] === colorsArray[i+1]) {
-            colorRGB = generateRandomColors();
-            colorsArray[i+1] = colorRGB;
+            rgb = generateRandomColors();
+            colorsArray[i+1] = rgb;
         }
     }
     return colorsArray;
@@ -48,5 +48,6 @@ for (let i = 0; i < 5; i += 1) {
         arrayPixelLine[i].appendChild(pixel);
     }
 }
-
+// define cor preta como cor inicial
+colorsArray[0].className = 'color selected';
 
