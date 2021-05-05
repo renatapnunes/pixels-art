@@ -63,5 +63,12 @@ board.addEventListener('click', function (e) {
     //let selectedColor = selected.style.backgroundColor;
     e.target.style.backgroundColor = selected[0].style.backgroundColor;
 });
-
+// botao limpar
+let clearButton = document.getElementById('clear-board');
+clearButton.addEventListener('click', function () {
+    let arrayPixels = document.getElementsByClassName('pixel');
+    for (let i = 0; i < arrayPixels.length; i += 1) {
+        arrayPixels[i].style.backgroundColor = 'rgb(255, 255, 255)';
+    }
+});
 
