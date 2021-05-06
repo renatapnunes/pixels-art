@@ -1,16 +1,52 @@
+@font-face {
+    font-family: 'FontPixel';
+    src: url('SuperMarioBros2.ttf');
+}
+body {
+    font-family: 'FontPixel', sans-serif;
+    text-align: center;
+    background-color: rgb(26,65,116);
+    color: rgb(255,255,255);
+}
 .color {
     width: 30px;
     height: 30px;
     display: inline-block;
     border: 1px solid rgb(0,0,0);
-    margin: 5px;
-    
+    box-shadow: 2px 2px 1px rgb(255,255,255), -2px -2px 1px rgb(255,255,255);
+    margin: 6px;
+}
+#clear-board {
+    height: 30px;
+    border: 2px solid rgb(50,205,50);
+    box-shadow: 3px 3px 5px rgb(9, 37, 73);
+    margin: 10px 30px;
+    font-family: 'FontPixel', sans-serif;
+}
+::-webkit-input-placeholder {
+    font-style: oblique;
 }
 #generate-board-size {
     display: inline-block;
 }
+#generate-board {
+    height: 30px;
+    border: 2px solid rgb(50,205,50);
+    box-shadow: 3px 3px 5px rgb(9, 37, 73);
+    font-family: 'FontPixel', sans-serif;
+}
+#div-pixel-board{
+    height: 300px;
+}
 #pixel-board {
     display: table;
+    position: absolute;
+    z-index: 1;
+    float: right;
+    border: 10px solid rgb(220,20,60);
+    border-top: 30px solid rgb(220,20,60);
+    box-shadow: 5px 5px 8px rgb(9, 37, 73);
+    margin-left: 150px;
 }
 .pixel-line {
     display: table-row;
@@ -20,4 +56,18 @@
     height: 40px;
     display: table-cell;
     border: 1px solid rgb(0,0,0);
+}
+img {
+    height: 150px;
+    position: absolute;
+    margin-right: 200px;
+    z-index: 0;
+}
+footer {
+    width: 100%;
+    font-size: 8px;
+    text-align: right;
+}
+a {
+    color: rgb(255,255,255);
 }

@@ -37,9 +37,9 @@ let board = document.getElementById('pixel-board');
 let arrayPixelLine = [];
 
 // tamanho do quadro de pixel inicial
-genarateBoard(5);
+generateBoard(5);
 
-function genarateBoard(size) {
+function generateBoard(size) {
     for (let i = 0; i < size; i += 1) {
         let pixelLine = document.createElement('div');
         pixelLine.className = 'pixel-line';
@@ -77,7 +77,7 @@ function captureInput() {
     }
     inputBoardSize.value = '';
     console.log(size);
-    return genarateBoard(size);
+    return generateBoard(size);
 }
 // define cor preta como cor inicial
 let blackColor = document.querySelector('.color');
