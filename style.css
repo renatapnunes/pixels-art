@@ -3,6 +3,8 @@
     src: url('SuperMarioBros2.ttf');
 }
 body {
+    width: auto;
+    height: auto;
     font-family: 'FontPixel', sans-serif;
     text-align: center;
     background-color: rgb(26,65,116);

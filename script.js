@@ -40,6 +40,7 @@ let arrayPixelLine = [];
 generateBoard(5);
 
 function generateBoard(size) {
+    board.style.width = 40 * size + 'px';
     for (let i = 0; i < size; i += 1) {
         let pixelLine = document.createElement('div');
         pixelLine.className = 'pixel-line';
@@ -84,8 +85,10 @@ let blackColor = document.querySelector('.color');
 blackColor.className = 'color selected';
 // seleciona cor a partir do clique do mouse
 pallete.addEventListener('click', function(e) {
-    let selected = document.getElementsByClassName('selected');
-    selected[0].className = 'color';
+    //let selected = document.getElementsByClassName('selected');
+    //selected[0].className = 'color';
+    let selected = document.querySelector(".selected");
+    selected.className = "color";
     e.target.className = 'color selected';
 });
 // preencher pixel com a cor selecionada
