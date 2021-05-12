@@ -33,6 +33,7 @@ function generateArrayRandomColors () {
     return colorsArray;
 }
 // quadro de pixels
+let divBoard = document.getElementById('div-pixel-board');
 let board = document.getElementById('pixel-board');
 let arrayPixelLine = [];
 
@@ -40,7 +41,8 @@ let arrayPixelLine = [];
 generateBoard(5);
 
 function generateBoard(size) {
-    board.style.width = 40 * size + 'px';
+    board.style.width = 42 * size + 'px';
+    divBoard.style.height = 40 * size + 150 + 'px';
     for (let i = 0; i < size; i += 1) {
         let pixelLine = document.createElement('div');
         pixelLine.className = 'pixel-line';
