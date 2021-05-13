@@ -9,27 +9,24 @@
 </head>
 <body>
     <h1 id="title">Paleta de Cores</h1>
-    <div id="color-palette"></div>
+    <div id="div-color-palette">
+        <div id="color-palette">
+        </div>
+        <button id="refresh"><img id="image-refresh" src="refresh-button.png" alt="Botão refresh"></button>
+    </div>
     <button id="clear-board">Limpar</button>
     <div id="generate-board-size">
         <input id="board-size"
-          placeholder="Tamanho de 5 a 50 pixels"
+          placeholder="Tamanho em pixels [5-50]"
           type="number"
           min="1"
         >
         <button id="generate-board">VQV</button>
     </div>
-    <div id="div-pixel-board">
-        <div id="div1">
-            <div id="pixel-board"></div>
-        </div>
-        <div id="div2">
-            <img src="Yoshi.png" alt="Yoshi">
-        </div>
-    </div>
+    <div id="pixel-board"></div>
     <footer>
-        <p>Projeto Pixels Art - Curso de Desenvolvimento Web - Trybe</p>
-        <p>Feito por <a href="https://www.linkedin.com/in/renata-p-nunes/" target="_blank">Renata Nunes</a> com HTML, CSS, JavaScript e s2</p>
+        <img id="image-yoshi" src="Yoshi.png" alt="Yoshi">
+        <p>Projeto Pixels Art - Curso de Desenvolvimento Web - Trybe<br>Feito por <a href="https://www.linkedin.com/in/renata-p-nunes/" target="_blank">Renata Nunes</a> com HTML, CSS, JavaScript e s2</p>
     </footer>
     <script src="script.js"></script>
 </body>

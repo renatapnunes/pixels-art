@@ -1,12 +1,74 @@
-// cria e adiciona paleta de cores
 let pallete = document.getElementById('color-palette');
 let arrayRandomColors = generateArrayRandomColors();
+let board = document.getElementById('pixel-board');
+let inputBoardSize = document.getElementById('board-size');
+let generateButton = document.getElementById('generate-board');
+let clearButton = document.getElementById('clear-board');
+let refreshButton = document.getElementById('refresh');
+let arrayPixelLine = [];
+let stringInput;
+let size;
+
+// cria e adiciona paleta de cores
 for (let i = 0; i < 4; i += 1) {
     let color = document.createElement('div');
     color.className = 'color';
     color.style.backgroundColor = arrayRandomColors[i];
     pallete.appendChild(color);
 }
+// define cor preta como cor inicial selecioanda
+let blackColor = document.querySelector('.color');
+blackColor.className = 'color selected';
+// tamanho do quadro de pixel inicial
+generateBoard(5);
+// define tamanho do quadro de pixel com base no input da pessoa usuaria
+generateButton.addEventListener('click', function () {
+    removeBoard();
+    stringInput = inputBoardSize.value;
+    if (stringInput !== '') {
+        size = parseInt(stringInput);
+        if (size < 5) {
+            size = 5;
+        } else if (size > 50) {
+            size = 50;
+        }
+    } else {
+        alert('Board inválido!');
+        size = 5;
+    }
+    inputBoardSize.value = '';
+    console.log(size);
+    return generateBoard(size);
+});
+// seleciona cor a partir do clique do mouse
+pallete.addEventListener('click', function(e) {
+    //let selected = document.getElementsByClassName('selected');
+    //selected[0].className = 'color';
+    let selected = document.querySelector(".selected");
+    selected.className = "color";
+    e.target.className = 'color selected';
+});
+// preenche pixel com a cor selecionada
+board.addEventListener('click', function (e) {
+    let selected = document.getElementsByClassName('selected');
+    //let selectedColor = selected.style.backgroundColor;
+    e.target.style.backgroundColor = selected[0].style.backgroundColor;
+});
+// deixa branco todos os pixels
+clearButton.addEventListener('click', function () {
+    let arrayPixels = document.getElementsByClassName('pixel');
+    for (let i = 0; i < arrayPixels.length; i += 1) {
+        arrayPixels[i].style.backgroundColor = 'rgb(255, 255, 255)';
+    }
+});
+// gera uma nova paleta de cores aleatorias
+refreshButton.addEventListener('click', function () {
+    let colors = document.getElementsByClassName('color');
+    let newArrayColors = generateArrayRandomColors();
+    for (let i = 0; i < 4; i += 1) {
+        colors[i].style.backgroundColor = newArrayColors[i];
+    }
+});
 // gera rgb aleatorio
 function generateRandomColors () {
     let r = Math.ceil(Math.random()*254);
@@ -32,17 +94,9 @@ function generateArrayRandomColors () {
     }
     return colorsArray;
 }
-// quadro de pixels
-let divBoard = document.getElementById('div-pixel-board');
-let board = document.getElementById('pixel-board');
-let arrayPixelLine = [];
-
-// tamanho do quadro de pixel inicial
-generateBoard(5);
-
+// gera quadro de pixels com tamanho variado
 function generateBoard(size) {
     board.style.width = 42 * size + 'px';
-    divBoard.style.height = 40 * size + 150 + 'px';
     for (let i = 0; i < size; i += 1) {
         let pixelLine = document.createElement('div');
         pixelLine.className = 'pixel-line';
@@ -58,59 +112,9 @@ function generateBoard(size) {
         }
     }
 }
-// tamanho do quadro de pixel definido pela pessoa usuaria
-let inputBoardSize = document.getElementById('board-size');
-let generateButton = document.getElementById('generate-board');
-let stringInput;
-let size;
-generateButton.addEventListener('click', captureInput);
-function captureInput() {
-    removeBoard();
-    stringInput = inputBoardSize.value;
-    if (stringInput !== '') {
-        size = parseInt(stringInput);
-        if (size < 5) {
-            size = 5;
-        } else if (size > 50) {
-            size = 50;
-        }
-    } else {
-        alert('Board inválido!');
-        size = 5;
-    }
-    inputBoardSize.value = '';
-    console.log(size);
-    return generateBoard(size);
-}
-// define cor preta como cor inicial
-let blackColor = document.querySelector('.color');
-blackColor.className = 'color selected';
-// seleciona cor a partir do clique do mouse
-pallete.addEventListener('click', function(e) {
-    //let selected = document.getElementsByClassName('selected');
-    //selected[0].className = 'color';
-    let selected = document.querySelector(".selected");
-    selected.className = "color";
-    e.target.className = 'color selected';
-});
-// preencher pixel com a cor selecionada
-board.addEventListener('click', function (e) {
-    let selected = document.getElementsByClassName('selected');
-    //let selectedColor = selected.style.backgroundColor;
-    e.target.style.backgroundColor = selected[0].style.backgroundColor;
-});
-// botao limpar
-let clearButton = document.getElementById('clear-board');
-clearButton.addEventListener('click', function () {
-    let arrayPixels = document.getElementsByClassName('pixel');
-    for (let i = 0; i < arrayPixels.length; i += 1) {
-        arrayPixels[i].style.backgroundColor = 'rgb(255, 255, 255)';
-    }
-});
-
+// apaga a board já existente
 function removeBoard() {
     for (let i = 0; i < arrayPixelLine.length; i += 0) {
         board.removeChild(arrayPixelLine[i]);
     }
 }
-
