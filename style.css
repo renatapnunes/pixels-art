@@ -42,7 +42,8 @@ button:active {
 }
 
 #clear-board {
-  margin-right: 40px;
+  margin-right: 20px;
+  margin-left: 20px;
 }
 
 #refresh {
@@ -51,6 +52,10 @@ button:active {
 
 #image-refresh {
   width: 15px;
+}
+
+#image-erase {
+  width: 14px;
 }
 
 #generate-board-size {
